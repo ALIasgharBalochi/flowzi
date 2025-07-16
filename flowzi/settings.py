@@ -32,6 +32,9 @@ ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,12 +47,15 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'channels',
-    'link'
+    'link',
+    'corsheaders'
 ]
 
 ASGI_APPLICATION = "flowzi.asgi.application"
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -98,9 +104,9 @@ WSGI_APPLICATION = 'flowzi.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'datbase_db_name',
-        'USER': 'example_user',
-        'PASSWORD': 'example_password',
+        'NAME': 'db_name',
+        'USER': 'db_user',
+        'PASSWORD': 'db_password',
         'HOST': 'localhost',
         'PORT': '5432'
     }

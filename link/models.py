@@ -28,7 +28,8 @@ class PrivateMessage(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, unique=True)
     room = models.ForeignKey(PrivateChatRoom, related_name='messages', on_delete=models.CASCADE)
     sender = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.TextField()
+    message_for_sender = models.TextField()
+    message_for_receiver = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

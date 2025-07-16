@@ -61,3 +61,18 @@ class ChangePasswordSerializer(serializers.Serializer):
         if len(value) < 6 :
             raise serializers.ValidationError('Password must be at least 6 characters long.')
         return value
+
+class GetUsersSerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = CustomUser
+        fields = ['id', 'nikname'] 
+
+class UpdatePublicKeySerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = CustomUser
+        fields = ['public_key']
+
+class GetUserPublicKeySerializer(serializers.ModelSerializer):
+    class Meta: 
+        model = CustomUser
+        fields = ['public_key']
